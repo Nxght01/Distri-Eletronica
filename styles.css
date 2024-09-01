@@ -1,0 +1,75 @@
+body {
+    font-family: 'Helvetica Neue', sans-serif;
+    background-color: #e8f5e9; /* Um verde claro suave */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    text-align: left; /* Texto alinhado à esquerda */
+    width: 320px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.container:hover {
+    transform: translateY(-5px);
+}
+
+h1 {
+    font-size: 20px;
+    color: #1b5e20; /* Verde escuro */
+    margin-bottom: 25px;
+}
+
+form {
+    margin-bottom: 25px;
+}
+
+input {
+    width: calc(100% - 16px);
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #bdbdbd;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    border-color: #388e3c; /* Verde mais escuro */
+}
+
+button {
+    padding: 12px;
+    background-color: #2e7d32; /* Verde moderado */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #1b5e20; /* Verde escuro */
+}
+
+#resultado {
+    margin-top: 25px;
+    font-size: 15px;
+    color: #424242; /* Cinza mais escuro */
+    background-color: #f1f8e9; /* Verde muito claro */
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #4caf50; /* Barra lateral verde */
+}
