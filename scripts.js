@@ -1,7 +1,9 @@
-function calcDist(event) {
-    // Prevenir a submissão do formulário
-    if (event) event.preventDefault();
+document.getElementById('formulario').addEventListener('submit', function(event) {
+    event.preventDefault(); // Previne o envio do formulário
+    calcDist(); // Chama a função para calcular a distribuição eletrônica
+});
 
+function calcDist() {
     const numeroAt = parseInt(document.getElementById('numeroAtomico').value);
     const resultadoDiv = document.getElementById('resultado');
 
