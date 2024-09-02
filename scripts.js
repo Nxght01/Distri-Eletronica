@@ -151,29 +151,43 @@ function calcDist() {
 
     let distribuicao = [];
     let eletronsRestantes = numeroAt;
-
+    // codigo com for para realizar a contagem dos eletrons e a difinição dos subniveis eletronicos, utilizando o numero atomico como base para definir o ultimo subnivel,quando o valor de eletrons restantes chegar a 0 ,sera finalizado o loop. 
     for (let i = 0; i < subniveis.length; i++) {
         const subnivel = subniveis[i][0];
         const maxEletrons = subniveis[i][1];
-
+        //caso o numero de eletrons chegar a 0, interrompe o loop
         if (eletronsRestantes <= 0) break;
-
+        //caso o numero de eletrons restantes seja maior que a capacidade do subnivel atual, é chamado outro subnivel para ser preenchido e esse subnivel vai ser adicionado a distribuição.
         if (eletronsRestantes >= maxEletrons) {
             distribuicao.push(`${subnivel}${maxEletrons}`);
             eletronsRestantes -= maxEletrons;
-        } else {
+        } 
+        //caso o numero de eletrons não ultrapaasse a capacidade maxima do subnivel atual, sera repassado o valor a distribuição e a variavel eletronsRestantes sera zerada, encerrando o loop
+        else {
             distribuicao.push(`${subnivel}${eletronsRestantes}`);
             eletronsRestantes = 0;
         }
     }
 
+
+
+    //codigo utilizado para encontrar a ultima camada, utlizando um .map para criar um novo array com os valores dentro da distribuição,
     const ultimaCamada = Math.max(...distribuicao.map(s => parseInt(s[0])));
+
+    //codigo utilizado para encontrar a camada de valencia, utilizando a variavel destribuição e transformando seu valor no valor da ultima camada(fazendo com que sejam as mesmas coisas)
     const camadaValencia = distribuicao.filter(s => parseInt(s[0]) === ultimaCamada);
+
+    //codigo utilizado para calcular o numero de eletrons na camada de valencia, utiliza um total mais o valor armazanado na ultima camada, utilizando o reduce para somar total e s em um unico valor(total vira um numero e s retorna somente o ultimo subnivel por causa do .slice, a partir de 0) 
     const nEletronsValencia = camadaValencia.reduce((total, s) => total + parseInt(s.slice(2)), 0);
 
+    //para calcular o subnivel mais energetico é somente adicionado um contador de elementos da variavel distribuição
     const subnivelMaisEnergetico = distribuicao[distribuicao.length - 1];
+    
+    //para calcular o numero de eletrons no subnivel mais energetico é utilizado de base o subnivel mais energetico, utilizando tambem a função slice para percorrer o array e retornar o ultimo valor a partir de 2
     const nEletronsSubnivelMaisEnergetico = parseInt(subnivelMaisEnergetico.slice(2));
 
+
+    //
     resultadoDiv.innerHTML = `
         <p><strong>Elemento:</strong> ${elemento.nome} (${elemento.simbolo})</p>
         <p><strong>Distribuição eletrônica:</strong> ${distribuicao.join(' ')}</p>
